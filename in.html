@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ma Valentine 💖</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #1a001f, #000);
+      color: white;
+      overflow-x: hidden;
+    }
+    .center {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .type {
+      max-width: 900px;
+      font-size: 26px;
+      line-height: 1.6;
+      min-height: 200px;
+      white-space: pre-line;
+    }
+    button {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      background: #ff2f92;
+      color: white;
+      margin-top: 20px;
+      transition: 0.4s;
+    }
+    #no {
+      background: #333;
+    }
+    .hidden {
+      display: none;
+    }
+    .cards {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      width: 260px;
+      height: 360px;
+      perspective: 1000px;
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: 0.8s;
+      transform-style: preserve-3d;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 0, 150, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+    }
+    .card-back {
+      background: linear-gradient(45deg, #ff2f92, #6a00ff);
+      font-size: 32px;
+    }
+    .card-front {
+      background: #111;
+      transform: rotateY(180deg);
+    }
+    .card-front img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+    .gallery {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .gallery img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #ff2f92;
+    }
+    .back-btn {
+      background: #6a00ff;
+      margin-top: 20px;
+    }
+    .details-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="music" src="Nicki Minaj - High School (Instrumental).mp3" loop></audio>
+
+<!-- 1 – Surprise -->
+<div id="s1" class="center">
+  <div id="t1" class="type"></div>
+  <button onclick="start()">Commencer</button>
+</div>
+
+<!-- 2 – Déclaration -->
+<div id="s2" class="center hidden">
+  <div id="t2" class="type"></div>
+  <button onclick="goQuestion()">Continuer</button>
+</div>
+
+<!-- 3 – Question Valentine -->
+<div id="s3" class="center hidden">
+  <div id="t3" class="type"></div>
+  <div style="display:flex; gap:20px">
+    <button id="yes">OUI 💖</button>
+    <button id="no">NON</button>
+  </div>
+</div>
+
+<!-- 4 – Cartes restaurants -->
+<div id="s4" class="center hidden">
+  <h2>Choisis notre restaurant de Saint‑Valentin 💕</h2>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-face card-back">?</div>
+        <div class="card-face card-front">
+          <img src="img/logo vila lana.png" alt="Villa Lana" style="border-radius: 10px;">
+          <h3>Villa Lana</h3>
+          <p>Riviera Golf</p>
+          <button onclick="showResto('villa')">Voir le resto</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-face card-back">?</div>
+        <div class="card-face card-front">
+          <img src="img/BNB logo.jpeg" alt="Ōkana" style="border-radius: 10px;">
+          <h3>BNB</h3>
+          <p>8ième Tranche</p>
+          <button onclick="showResto('BNB')">Voir le resto</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-face card-back">?</div>
+        <div class="card-face card-front">
+          <img src="img/WhatsApp Image 2026-02-10 at 13.23.16.jpeg" alt="Texas Grillz" style="border-radius: 10px;">
+          <h3>Texas Grillz</h3>
+          <p>Cocody,Yopougon,deux plateaux</p>
+          <button onclick="showResto('texas')">Voir le resto</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 5 – Détail restaurant (fiche) -->
+<div id="s5" class="center hidden">
+  <img id="restoLogo" src="" style="width:150px; margin-bottom:10px; border-radius: 10px;">
+  <h2 id="restoName"></h2>
+  <p id="restoAddr"></p>
+  <div class="details-buttons">
+    <button onclick="showLieu()">📍 Voir le lieu</button>
+    <button onclick="showPlats()">🍽️ Voir les plats</button>
+    <button onclick="chooseResto()">❤️ Choisir ce restaurant</button>
+  </div>
+  <button class="back-btn" onclick="backToCards()">⬅ Retour aux restaurants</button>
+</div>
+
+<!-- 6 – Lieu (photos) -->
+<div id="s6" class="center hidden">
+  <h2>Le lieu – <span id="lieuName"></span></h2>
+  <div class="gallery" id="lieuGallery"></div>
+  <button class="back-btn" onclick="backToDetail()">⬅ Retour à la fiche</button>
+</div>
+
+<!-- 7 – Plats (photos) -->
+<div id="s7" class="center hidden">
+  <h2>Les plats – <span id="platsName"></span></h2>
+  <div class="gallery" id="platsGallery"></div>
+  <button class="back-btn" onclick="backToDetail()">⬅ Retour à la fiche</button>
+</div>
+
+<!-- 8 – Final (choix confirmé) -->
+<div id="s8" class="center hidden">
+  <h1>Parfait 😌❤️</h1>
+  <p id="finalText"></p>
+  <p>Le message a été envoyé à Othniel.</p>
+  <button onclick="backToCards()">Changer de restaurant</button>
+</div>
+
+<script>
+  // Musique
+  const music = document.getElementById('music');
+
+  // Variables globales
+  let currentResto = '';        // 'villa', 'okana', 'texas'
+  let chosenResto = '';         // nom complet pour affichage
+
+  // Données des restaurants avec VOS PHOTOS
+  const restos = {
+    villa: {
+      name: 'Villa Lana',
+      addr: 'Riviera Golf, Rue D30',
+      logo: 'img/logo vila lana.png',
+      lieuPhotos: [
+        'img/villa/lana lieu.jpeg',
+        'img/villa/villa lanan lieu.jpeg',
+      ],
+      platsPhotos: [
+        'img/villa/plat lana 2.jpeg',
+        'img/villa/plat lana.jpeg',
+      ]
+    },
+    BNB: {
+      name: 'BNB',
+      addr: 'Cocody Riviera Palmeraie, Rue I220',
+      logo: 'img/BNB logo.jpeg',
+      lieuPhotos: [
+        'img/bnb/bnb lieu.jpeg',
+        'img/bnb/bnb lieu1.jpeg',
+        'img/bnb/lieu bnb 3.webp'
+      ],
+      platsPhotos: [
+        'img/bnb/Plat bnb 1.jpeg',
+        'img/bnb/plat bnb 2.jpeg',
+        'img/bnb/plat bnb 3.jpeg'
+      ]
+    },
+    texas: {
+      name: 'Texas Grillz',
+      addr: 'Cocody Deux plateaux;  Cocody Riviera jardin;  Cocody cité des arts; Yopougon Maroc',
+      logo: 'img/WhatsApp Image 2026-02-10 at 13.23.16.jpeg',
+      lieuPhotos: [
+        'img/texas/484048609_957252099916324_1114765249220016389_n.jpg',
+        'img/texas/BAAB-Texas-GrillZ-Cite-des-arts-6.jpeg',
+        'img/texas/BAAB-Texas-GrillZ-Cite-des-arts-5.jpeg'
+      ],
+      platsPhotos: [
+        'img/texas/plat texas 2.jpeg',
+        'img/texas/PLAT texas.jpeg',
+        'img/texas/PLAT texas 3.jpeg'
+      ]
+    }
+  };
+
+  // Fonction de machine à écrire
+  function type(el, text, i = 0) {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      setTimeout(() => type(el, text, i + 1), 30);
+    }
+  }
+
+  // Initialisation : message surprise
+  type(t1, "J’ai une surprise pour toi 💕");
+
+  // 1 → 2
+  function start() {
+    music.play();
+    s1.classList.add('hidden');
+    s2.classList.remove('hidden');
+    type(t2, `Depuis que tu es entrée dans ma vie,
+plus rien n’est pareil.
+Tu es devenue mon calme,
+mon sourire dans les moments difficiles,
+et ma plus belle habitude chaque jour.
+
+Je n’aime pas seulement passer du temps avec toi,
+j’aime qui je deviens quand je suis avec toi.
+Tu me fais me sentir compris, accepté,
+et profondément aimé.
+
+Même quand on se dispute,
+même quand on ne se comprend pas tout de suite,
+mon cœur ne doute jamais de toi.
+Parce que ce que je ressens pour toi est plus fort
+que n’importe quelle difficulté.
+
+Je ne veux pas juste être quelqu’un dans ta vie.
+Je veux être celui qui te soutient,
+qui te protège,
+qui te fait rire quand tu veux pleurer,
+et qui marche à tes côtés, peu importe la route.
+
+Aujourd’hui, je ne te parle pas comme un garçon lambda,
+ni comme un ami,
+mais comme quelqu’un qui t’aime sincèrement,
+de tout son cœur.`);
+  }
+
+  // 2 → 3
+  function goQuestion() {
+    s2.classList.add('hidden');
+    s3.classList.remove('hidden');
+    type(t3, "Veux-tu être ma Valentine ? 💖");
+  }
+
+  // Animation boutons NON / OUI
+  let ns = 1, ys = 1;
+  no.onclick = () => {
+    ns -= 0.15;
+    no.style.transform = `scale(${ns})`;
+    ys += 0.1;
+    yes.style.transform = `scale(${ys})`;
+    if (ns < 0.1) no.style.display = 'none';
+  };
+
+  yes.onclick = () => {
+    s3.classList.add('hidden');
+    s4.classList.remove('hidden');
+  };
+
+  // Afficher la fiche d'un restaurant
+  function showResto(restoId) {
+    currentResto = restoId;
+    const r = restos[restoId];
+    restoLogo.src = r.logo;
+    restoName.innerText = r.name;
+    restoAddr.innerText = r.addr;
+    s4.classList.add('hidden');
+    s5.classList.remove('hidden');
+  }
+
+  // Retour aux cartes depuis la fiche
+  function backToCards() {
+    s5.classList.add('hidden');
+    s4.classList.remove('hidden');
+    // si on était dans une galerie, on les cache aussi
+    s6.classList.add('hidden');
+    s7.classList.add('hidden');
+    s8.classList.add('hidden');
+  }
+
+  // Retour à la fiche depuis lieu ou plats
+  function backToDetail() {
+    s6.classList.add('hidden');
+    s7.classList.add('hidden');
+    s5.classList.remove('hidden');
+  }
+
+  // Afficher la galerie Lieu
+  function showLieu() {
+    const r = restos[currentResto];
+    lieuName.innerText = r.name;
+    let html = '';
+    r.lieuPhotos.forEach(url => { html += `<img src="${url}" alt="Lieu">`; });
+    lieuGallery.innerHTML = html;
+    s5.classList.add('hidden');
+    s6.classList.remove('hidden');
+  }
+
+  // Afficher la galerie Plats
+  function showPlats() {
+    const r = restos[currentResto];
+    platsName.innerText = r.name;
+    let html = '';
+    r.platsPhotos.forEach(url => { html += `<img src="${url}" alt="Plat">`; });
+    platsGallery.innerHTML = html;
+    s5.classList.add('hidden');
+    s7.classList.remove('hidden');
+  }
+
+  // Choisir ce restaurant → ouvre WhatsApp + écran final
+  function chooseResto() {
+    const r = restos[currentResto];
+    chosenResto = r.name;
+    // Préparer le message WhatsApp
+    const message = `Othniel 💖%0AJ'ai choisi le restaurant ${chosenResto} pour notre dîner de Saint-Valentin 😘`;
+    // Ouvrir WhatsApp dans un nouvel onglet
+    window.open(`https://wa.me/225767842730?text=${message}`, '_blank');
+    // Afficher l'écran final
+    s5.classList.add('hidden');
+    s6.classList.add('hidden');
+    s7.classList.add('hidden');
+    finalText.innerText = `Tu as choisi : ${chosenResto} 💕`;
+    s8.classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>
