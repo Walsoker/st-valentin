@@ -4,124 +4,31 @@
   <meta charset="UTF-8">
   <title>Ma Valentine 💖</title>
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top, #1a001f, #000);
-      color: white;
-      overflow-x: hidden;
-    }
-    .center {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-    .type {
-      max-width: 900px;
-      font-size: 26px;
-      line-height: 1.6;
-      min-height: 200px;
-      white-space: pre-line;
-    }
-    button {
-      padding: 15px 30px;
-      border: none;
-      border-radius: 30px;
-      font-size: 18px;
-      cursor: pointer;
-      background: #ff2f92;
-      color: white;
-      margin-top: 20px;
-      transition: 0.4s;
-    }
-    #no {
-      background: #333;
-    }
-    .hidden {
-      display: none;
-    }
-    .cards {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .card {
-      width: 260px;
-      height: 360px;
-      perspective: 1000px;
-    }
-    .card-inner {
-      width: 100%;
-      height: 100%;
-      transition: 0.8s;
-      transform-style: preserve-3d;
-    }
-    .card:hover .card-inner {
-      transform: rotateY(180deg);
-    }
-    .card-face {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(255, 0, 150, 0.4);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
-    }
-    .card-back {
-      background: linear-gradient(45deg, #ff2f92, #6a00ff);
-      font-size: 32px;
-    }
-    .card-front {
-      background: #111;
-      transform: rotateY(180deg);
-    }
-    .card-front img {
-      width: 120px;
-      margin-bottom: 10px;
-    }
-    .gallery {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 20px 0;
-    }
-    .gallery img {
-      width: 200px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 2px solid #ff2f92;
-    }
-    .back-btn {
-      background: #6a00ff;
-      margin-top: 20px;
-    }
-    .details-buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 20px 0;
-    }
+    /* Styles identiques à ton code (garde les mêmes) */
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { margin:0; background: radial-gradient(circle at top, #1a001f, #000); color:white; overflow-x:hidden; }
+    .center { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:20px; }
+    .type { max-width:900px; font-size:26px; line-height:1.6; min-height:200px; white-space:pre-line; }
+    button { padding:15px 30px; border:none; border-radius:30px; font-size:18px; cursor:pointer; background:#ff2f92; color:white; margin-top:20px; transition:0.4s; }
+    #no { background:#333; }
+    .hidden { display:none; }
+    .cards { display:flex; gap:30px; flex-wrap:wrap; justify-content:center; }
+    .card { width:260px; height:360px; perspective:1000px; }
+    .card-inner { width:100%; height:100%; transition:0.8s; transform-style:preserve-3d; }
+    .card:hover .card-inner { transform:rotateY(180deg); }
+    .card-face { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:20px; box-shadow:0 0 25px rgba(255,0,150,0.4); display:flex; flex-direction:column; justify-content:center; align-items:center; padding:15px; }
+    .card-back { background:linear-gradient(45deg,#ff2f92,#6a00ff); font-size:32px; }
+    .card-front { background:#111; transform:rotateY(180deg); }
+    .card-front img { width:120px; margin-bottom:10px; border-radius:10px; }
+    .gallery { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin:20px 0; }
+    .gallery img { width:200px; height:150px; object-fit:cover; border-radius:12px; border:2px solid #ff2f92; }
+    .back-btn { background:#6a00ff; margin-top:20px; }
+    .details-buttons { display:flex; gap:15px; flex-wrap:wrap; justify-content:center; margin:20px 0; }
   </style>
 </head>
 <body>
 
-<audio id="music" src="Nicki Minaj - High School (Instrumental).mp3" loop></audio>
+<audio id="music" src="audio.mp3" loop></audio>
 
 <!-- 1 – Surprise -->
 <div id="s1" class="center">
@@ -149,11 +56,12 @@
   <h2>Choisis notre restaurant de Saint‑Valentin 💕</h2>
   <div class="cards">
 
+    <!-- Villa Lana -->
     <div class="card">
       <div class="card-inner">
         <div class="card-face card-back">?</div>
         <div class="card-face card-front">
-          <img src="img/logo vila lana.png" alt="Villa Lana" style="border-radius: 10px;">
+          <img src="img/villa_logo.png" alt="Villa Lana">
           <h3>Villa Lana</h3>
           <p>Riviera Golf</p>
           <button onclick="showResto('villa')">Voir le resto</button>
@@ -161,25 +69,27 @@
       </div>
     </div>
 
+    <!-- BNB -->
     <div class="card">
       <div class="card-inner">
         <div class="card-face card-back">?</div>
         <div class="card-face card-front">
-          <img src="img/BNB logo.jpeg" alt="Ōkana" style="border-radius: 10px;">
+          <img src="img/bnb_logo.jpeg" alt="BNB">
           <h3>BNB</h3>
           <p>8ième Tranche</p>
-          <button onclick="showResto('BNB')">Voir le resto</button>
+          <button onclick="showResto('bnb')">Voir le resto</button>
         </div>
       </div>
     </div>
 
+    <!-- Texas Grillz -->
     <div class="card">
       <div class="card-inner">
         <div class="card-face card-back">?</div>
         <div class="card-face card-front">
-          <img src="img/WhatsApp Image 2026-02-10 at 13.23.16.jpeg" alt="Texas Grillz" style="border-radius: 10px;">
+          <img src="img/logo_texas_frills.jpeg alt="Texas Grillz">
           <h3>Texas Grillz</h3>
-          <p>Cocody,Yopougon,deux plateaux</p>
+          <p>Cocody, Yopougon, Deux Plateaux</p>
           <button onclick="showResto('texas')">Voir le resto</button>
         </div>
       </div>
@@ -190,7 +100,7 @@
 
 <!-- 5 – Détail restaurant (fiche) -->
 <div id="s5" class="center hidden">
-  <img id="restoLogo" src="" style="width:150px; margin-bottom:10px; border-radius: 10px;">
+  <img id="restoLogo" src="" style="width:150px; margin-bottom:10px; border-radius:10px;">
   <h2 id="restoName"></h2>
   <p id="restoAddr"></p>
   <div class="details-buttons">
@@ -224,61 +134,56 @@
 </div>
 
 <script>
-  // Musique
   const music = document.getElementById('music');
+  let currentResto = '';
+  let chosenResto = '';
 
-  // Variables globales
-  let currentResto = '';        // 'villa', 'okana', 'texas'
-  let chosenResto = '';         // nom complet pour affichage
-
-  // Données des restaurants avec VOS PHOTOS
   const restos = {
     villa: {
       name: 'Villa Lana',
       addr: 'Riviera Golf, Rue D30',
-      logo: 'img/logo vila lana.png',
+      logo: 'img/villa_logo.png',
       lieuPhotos: [
-        'img/villa/lana lieu.jpeg',
-        'img/villa/villa lanan lieu.jpeg',
+        'img/villa/lieu1.jpg',
+        'img/villa/lieu2.jpg'
       ],
       platsPhotos: [
-        'img/villa/plat lana 2.jpeg',
-        'img/villa/plat lana.jpeg',
+        'img/villa/plat1.jpg',
+        'img/villa/plat2.jpg'
       ]
     },
-    BNB: {
+    bnb: {
       name: 'BNB',
       addr: 'Cocody Riviera Palmeraie, Rue I220',
-      logo: 'img/BNB logo.jpeg',
+      logo: 'img/bnb_logo.jpeg',
       lieuPhotos: [
-        'img/bnb/bnb lieu.jpeg',
-        'img/bnb/bnb lieu1.jpeg',
-        'img/bnb/lieu bnb 3.webp'
+        'img/bnb/lieu1.jpeg',
+        'img/bnb/lieu2.jpeg',
+        'img/bnb/lieu3.webp'
       ],
       platsPhotos: [
-        'img/bnb/Plat bnb 1.jpeg',
-        'img/bnb/plat bnb 2.jpeg',
-        'img/bnb/plat bnb 3.jpeg'
+        'img/bnb/plat1.jpeg',
+        'img/bnb/plat2.jpeg',
+        'img/bnb/plat3.jpeg'
       ]
     },
     texas: {
       name: 'Texas Grillz',
-      addr: 'Cocody Deux plateaux;  Cocody Riviera jardin;  Cocody cité des arts; Yopougon Maroc',
-      logo: 'img/WhatsApp Image 2026-02-10 at 13.23.16.jpeg',
+      addr: 'Cocody Deux plateaux; Riviera jardin; Cité des arts; Yopougon Maroc',
+      logo: 'img/texas_logo.jpeg',
       lieuPhotos: [
-        'img/texas/484048609_957252099916324_1114765249220016389_n.jpg',
-        'img/texas/BAAB-Texas-GrillZ-Cite-des-arts-6.jpeg',
-        'img/texas/BAAB-Texas-GrillZ-Cite-des-arts-5.jpeg'
+        'img/texas/lieu1.jpg',
+        'img/texas/lieu2.jpeg',
+        'img/texas/lieu3.jpeg'
       ],
       platsPhotos: [
-        'img/texas/plat texas 2.jpeg',
-        'img/texas/PLAT texas.jpeg',
-        'img/texas/PLAT texas 3.jpeg'
+        'img/texas/plat1.jpeg',
+        'img/texas/plat2.jpeg',
+        'img/texas/plat3.jpeg'
       ]
     }
   };
 
-  // Fonction de machine à écrire
   function type(el, text, i = 0) {
     if (i < text.length) {
       el.innerHTML += text.charAt(i);
@@ -286,10 +191,8 @@
     }
   }
 
-  // Initialisation : message surprise
-  type(t1, "J’ai une surprise pour toi 💕");
+  type(t1, "J'ai une surprise pour toi 💕");
 
-  // 1 → 2
   function start() {
     music.play();
     s1.classList.add('hidden');
@@ -323,14 +226,12 @@ mais comme quelqu’un qui t’aime sincèrement,
 de tout son cœur.`);
   }
 
-  // 2 → 3
   function goQuestion() {
     s2.classList.add('hidden');
     s3.classList.remove('hidden');
     type(t3, "Veux-tu être ma Valentine ? 💖");
   }
 
-  // Animation boutons NON / OUI
   let ns = 1, ys = 1;
   no.onclick = () => {
     ns -= 0.15;
@@ -345,7 +246,6 @@ de tout son cœur.`);
     s4.classList.remove('hidden');
   };
 
-  // Afficher la fiche d'un restaurant
   function showResto(restoId) {
     currentResto = restoId;
     const r = restos[restoId];
@@ -356,24 +256,20 @@ de tout son cœur.`);
     s5.classList.remove('hidden');
   }
 
-  // Retour aux cartes depuis la fiche
   function backToCards() {
     s5.classList.add('hidden');
     s4.classList.remove('hidden');
-    // si on était dans une galerie, on les cache aussi
     s6.classList.add('hidden');
     s7.classList.add('hidden');
     s8.classList.add('hidden');
   }
 
-  // Retour à la fiche depuis lieu ou plats
   function backToDetail() {
     s6.classList.add('hidden');
     s7.classList.add('hidden');
     s5.classList.remove('hidden');
   }
 
-  // Afficher la galerie Lieu
   function showLieu() {
     const r = restos[currentResto];
     lieuName.innerText = r.name;
@@ -384,7 +280,6 @@ de tout son cœur.`);
     s6.classList.remove('hidden');
   }
 
-  // Afficher la galerie Plats
   function showPlats() {
     const r = restos[currentResto];
     platsName.innerText = r.name;
@@ -395,15 +290,11 @@ de tout son cœur.`);
     s7.classList.remove('hidden');
   }
 
-  // Choisir ce restaurant → ouvre WhatsApp + écran final
   function chooseResto() {
     const r = restos[currentResto];
     chosenResto = r.name;
-    // Préparer le message WhatsApp
     const message = `Othniel 💖%0AJ'ai choisi le restaurant ${chosenResto} pour notre dîner de Saint-Valentin 😘`;
-    // Ouvrir WhatsApp dans un nouvel onglet
     window.open(`https://wa.me/225767842730?text=${message}`, '_blank');
-    // Afficher l'écran final
     s5.classList.add('hidden');
     s6.classList.add('hidden');
     s7.classList.add('hidden');
